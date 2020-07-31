@@ -16,14 +16,14 @@ def download():
     def func():
         global downloading
         if not downloading:
-            with youtube_dl.YoutubeDL({'format': formt.get()}) as ydl:
-                link = re.findall('^https://www.youtube.com/watch[?]v=[^&]+', inp.get())
-                if link:
+            link = re.findall('^https://www.youtube.com/watch[?]v=[^&]+', inp.get())
+            if link:
                     text.delete(1.0, END)
-                    downloading = True
-                    ydl.download(link)
-                    downloading = False
-                print('***DOWNLOAD DONE***')
+                    with youtube_dl.YoutubeDL({'format': formt.get()}) as ydl:
+                        downloading = True
+                        ydl.download(link)
+                        downloading = False
+                        print('***DOWNLOAD DONE***')
         else:
             print('******DO NOT INTURRUPT CURRENT DOWNLOAD*******')
     threading.Thread(target=func).start()  
