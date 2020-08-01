@@ -35,10 +35,11 @@ def file_save():
  
 
 def printer(r, bytes):
-    string = ''
+    # string = ''
     while True:
-        string = os.read(r, bytes).decode()
-        text.insert(INSERT, string)
+        # string = os.read(r, bytes).decode()
+        text.insert(INSERT, os.read(r, bytes).decode())
+        text.see(INSERT)
 
 
 def flusher():
