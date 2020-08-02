@@ -38,7 +38,7 @@ def printer(r, bytes):
     # string = ''
     while True:
         # string = os.read(r, bytes).decode()
-        text.insert(INSERT, os.read(r, bytes).decode())
+        text.insert(INSERT, os.read(r, bytes))
         text.see(INSERT)
 
 
@@ -90,7 +90,7 @@ ttk.Button(frame_2, text='Download', command=download).pack(side=LEFT, expand=YE
 ttk.Button(frame_2, text='Browse', command=file_save).pack(side=LEFT, expand=YES, fill=BOTH)
 
 
-t2 = threading.Thread(target=printer, args=(r, 5))
+t2 = threading.Thread(target=printer, args=(r, 15))
 t2.daemon = True
 t2.start()
 t3 = threading.Thread(target=flusher)
